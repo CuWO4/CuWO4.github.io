@@ -9,8 +9,20 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <h1 class="site-title">CuWO4</h1>
-      <p class="site-subtitle">Public repositories</p>
+      <div id="author-card" class="author-card">
+        <a id="author-link" class="author-main" target="_blank" rel="noopener noreferrer">
+          <div class="author-top">
+            <img id="author-avatar" class="author-avatar" alt="avatar">
+            <div class="author-info">
+              <span id="author-name" class="author-name"></span>
+              <span id="author-bio" class="author-bio"></span>
+              <span id="author-email" class="author-email"></span>
+            </div>
+          </div>
+          <img id="contribution-graph" class="contribution-graph"
+               src="data/contributions.svg" alt="contribution graph" loading="lazy">
+        </a>
+      </div>
       <p class="last-updated" id="last-updated"></p>
     </div>
   </header>

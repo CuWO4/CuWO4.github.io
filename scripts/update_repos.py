@@ -11,6 +11,10 @@ OWNER = "CuWO4"
 API = "https://api.github.com"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 OUT = "data/repos.json"
+CONTRIB_URL = "https://github.com/users/CuWO4/contributions"
+CONTRIB_OUT = "data/contributions.svg"
+CONTRIB_LEVEL_COLORS = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
+CONTRIB_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 
 def request(path):
@@ -34,6 +38,82 @@ def count_commits(full_name):
             if m:
                 return int(m.group(1))
     return len(body)
+
+
+def request_html(url):
+    req = urllib.request.Request(url, headers={
+        "Accept": "text/html",
+        "User-Agent": "CuWO4.github.io-updater",
+    })
+    with urllib.request.urlopen(req) as resp:
+        return resp.read().decode("utf-8")
+
+
+def parse_contributions(html):
+    cells = {}
+    id_re = re.compile(r"contribution-day-component-(\d+)-(\d+)")
+    for td in re.findall(r"<td[^>]*>", html):
+        idm = id_re.search(td)
+        dm = re.search(r'data-date="([^"]+)"', td)
+        lm = re.search(r'data-level="(\d)"', td)
+        if idm and dm and lm:
+            row, col = int(idm.group(1)), int(idm.group(2))
+            cells[(row, col)] = (dm.group(1), int(lm.group(1)))
+    return cells
+
+
+def render_contributions_svg(cells):
+    if not cells:
+        return ""
+    rows = max(r for r, _ in cells) + 1
+    cols = max(c for _, c in cells) + 1
+    cell = 11
+    gap = 4
+    label_h = 22
+    width = cols * (cell + gap) - gap
+    height = label_h + rows * (cell + gap) - gap
+
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}"'
+        f' viewBox="0 0 {width} {height}" role="img" aria-label="contribution graph">'
+    ]
+
+    last_month = None
+    for col in range(cols):
+        month = None
+        for (r, c), (date, _) in sorted(cells.items()):
+            if c == col:
+                month = int(date[5:7])
+                break
+        if month is not None and month != last_month:
+            x = col * (cell + gap)
+            parts.append(
+                f'<text x="{x}" y="{label_h - 8}" font-size="11" fill="#8b949e">'
+                f'{CONTRIB_MONTHS[month - 1]}</text>'
+            )
+            last_month = month
+
+    for (row, col), (_, level) in sorted(cells.items(), key=lambda kv: (kv[0][1], kv[0][0])):
+        x = col * (cell + gap)
+        y = label_h + row * (cell + gap)
+        parts.append(
+            f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2" '
+            f'fill="{CONTRIB_LEVEL_COLORS[level]}"/>'
+        )
+
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def generate_contributions():
+    html = request_html(CONTRIB_URL)
+    svg = render_contributions_svg(parse_contributions(html))
+    if not svg:
+        raise RuntimeError("no contribution cells parsed")
+    os.makedirs(os.path.dirname(CONTRIB_OUT), exist_ok=True)
+    with open(CONTRIB_OUT, "w", encoding="utf-8") as f:
+        f.write(svg)
+    print(f"wrote {CONTRIB_OUT}")
 
 
 def main():
@@ -77,6 +157,8 @@ def main():
         f.write("\n")
 
     print(f"wrote {OUT} with {len(cards)} repos")
+
+    generate_contributions()
 
 
 if __name__ == "__main__":

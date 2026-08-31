@@ -33,16 +33,58 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
-.site-title {
-  margin: 0;
-  font-size: 24px;
+.author-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.author-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.author-top {
+  display: flex;
+  gap: 16px;
+}
+
+.author-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.author-name {
+  font-size: 20px;
   font-weight: 600;
 }
 
-.site-subtitle {
-  margin: 4px 0 0;
+.author-main:hover .author-name {
+  color: var(--link);
+}
+
+.author-bio,
+.author-email {
+  font-size: 13px;
   color: var(--fg-muted);
-  font-size: 14px;
+}
+
+.contribution-graph {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .last-updated {
@@ -52,8 +94,8 @@ body {
 }
 
 .repo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
@@ -98,17 +140,25 @@ body {
   color: var(--fg-muted);
 }
 
-.lang {
+.repo-meta .lang,
+.repo-meta .meta-item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+}
+
+.octicon {
+  fill: currentColor;
+}
+
+.octicon-star {
+  fill: #e3b341;
 }
 
 .lang-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--fg-muted);
 }
 
 .empty-state {

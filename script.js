@@ -2,6 +2,67 @@ const grid = document.getElementById("repo-grid");
 const empty = document.getElementById("empty-state");
 const lastUpdated = document.getElementById("last-updated");
 
+const ICON_STAR =
+  '<svg class="octicon octicon-star" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path></svg>';
+const ICON_COMMIT =
+  '<svg class="octicon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path></svg>';
+
+const LANG_COLORS = {
+  "C": "#555555",
+  "C++": "#f34b7d",
+  "C#": "#178600",
+  "Java": "#b07219",
+  "JavaScript": "#f1e05a",
+  "TypeScript": "#3178c6",
+  "Python": "#3572A5",
+  "Go": "#00ADD8",
+  "Rust": "#dea584",
+  "Ruby": "#701516",
+  "PHP": "#4F5D95",
+  "Shell": "#89e051",
+  "PowerShell": "#012456",
+  "HTML": "#e34c26",
+  "CSS": "#663399",
+  "Coq": "#d0b68c",
+  "Scala": "#c22d40",
+  "Kotlin": "#A97BFF",
+  "Swift": "#F05138",
+  "Dart": "#00B4AB",
+  "Vue": "#41b883",
+  "TeX": "#3D6117",
+  "Markdown": "#083fa1",
+  "Jupyter Notebook": "#DA5B0B",
+  "Assembly": "#6E4C13",
+  "Objective-C": "#438eff",
+  "Perl": "#0298c3",
+  "Lua": "#000080",
+  "Haskell": "#5e5086",
+  "Elixir": "#6e4a7e",
+  "Erlang": "#B83998",
+  "Julia": "#a270ba",
+  "R": "#198CE7",
+  "MATLAB": "#e16737",
+  "Fortran": "#4d41b1",
+  "Zig": "#ec915c",
+  "Nim": "#ffc200",
+  "Makefile": "#427819",
+  "Vim script": "#199f4b",
+  "Dockerfile": "#384d54",
+  "YAML": "#cb171e",
+  "JSON": "#292929",
+  "GLSL": "#5686a5",
+};
+
+function langColor(lang) {
+  return LANG_COLORS[lang] || "#8b949e";
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
+}
+
 async function load() {
   let data;
   try {
@@ -50,34 +111,21 @@ function renderCard(repo) {
   const meta = document.createElement("div");
   meta.className = "repo-meta";
 
+  let metaHtml = "";
   if (repo.language) {
-    const lang = document.createElement("span");
-    lang.className = "lang";
-    const dot = document.createElement("span");
-    dot.className = "lang-dot";
-    lang.appendChild(dot);
-    lang.appendChild(document.createTextNode(repo.language));
-    meta.appendChild(lang);
+    metaHtml +=
+      `<span class="lang"><span class="lang-dot" style="background:${langColor(repo.language)}"></span>${escapeHtml(repo.language)}</span>`;
   }
-
-  meta.appendChild(stat(fmt(repo.stargazers_count) + " stars"));
-  meta.appendChild(stat(fmt(repo.commits) + " commits"));
-
-  const updated = document.createElement("span");
-  updated.title = new Date(repo.updated_at).toUTCString();
-  updated.textContent = "Updated " + timeAgo(repo.updated_at);
-  meta.appendChild(updated);
+  metaHtml +=
+    `<span class="meta-item">${ICON_STAR}${fmt(repo.stargazers_count)}</span>` +
+    `<span class="meta-item">${ICON_COMMIT}${fmt(repo.commits)}</span>` +
+    `<span class="meta-item" title="${new Date(repo.updated_at).toUTCString()}">Updated ${timeAgo(repo.updated_at)}</span>`;
+  meta.innerHTML = metaHtml;
 
   card.appendChild(name);
   card.appendChild(desc);
   card.appendChild(meta);
   return card;
-}
-
-function stat(text) {
-  const span = document.createElement("span");
-  span.textContent = text;
-  return span;
 }
 
 function fmt(n) {
@@ -100,4 +148,31 @@ function timeAgo(iso) {
   return `${years} year${years === 1 ? "" : "s"} ago`;
 }
 
+async function loadAuthor() {
+  const link = document.getElementById("author-link");
+  const avatar = document.getElementById("author-avatar");
+  const nameEl = document.getElementById("author-name");
+  const bioEl = document.getElementById("author-bio");
+  const emailEl = document.getElementById("author-email");
+
+  let user;
+  try {
+    const res = await fetch("https://api.github.com/users/CuWO4");
+    if (!res.ok) return;
+    user = await res.json();
+  } catch {
+    return;
+  }
+
+  link.href = user.html_url || "https://github.com/CuWO4";
+  avatar.src = user.avatar_url || "";
+  avatar.alt = user.login || "avatar";
+  nameEl.textContent = user.name || user.login || "";
+  if (user.bio) bioEl.textContent = user.bio;
+  else bioEl.remove();
+  if (user.email) emailEl.textContent = user.email;
+  else emailEl.remove();
+}
+
+loadAuthor();
 load();

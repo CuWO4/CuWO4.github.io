@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T15:24:11+00:00",
+  "generated_at": "2026-08-31T15:44:03+00:00",
   "repos": [
     {
       "name": "Golf-Snake",
@@ -8,7 +8,7 @@
       "language": "C",
       "html_url": "https://github.com/CuWO4/Golf-Snake",
       "stargazers_count": 6,
-      "commits": 28,
+      "commits": 0,
       "updated_at": "2026-06-20T16:27:34Z"
     },
     {
@@ -18,7 +18,7 @@
       "language": "C++",
       "html_url": "https://github.com/CuWO4/ONRE",
       "stargazers_count": 6,
-      "commits": 139,
+      "commits": 0,
       "updated_at": "2026-07-13T17:01:42Z"
     },
     {
@@ -28,7 +28,7 @@
       "language": "C++",
       "html_url": "https://github.com/CuWO4/Lambda-Calculus-Engine",
       "stargazers_count": 5,
-      "commits": 46,
+      "commits": 0,
       "updated_at": "2026-03-10T07:05:37Z"
     },
     {
@@ -38,7 +38,7 @@
       "language": "C++",
       "html_url": "https://github.com/CuWO4/SysY-Compiler",
       "stargazers_count": 3,
-      "commits": 140,
+      "commits": 0,
       "updated_at": "2025-04-05T09:03:37Z"
     },
     {
@@ -48,7 +48,7 @@
       "language": "Python",
       "html_url": "https://github.com/CuWO4/ZhuGo",
       "stargazers_count": 3,
-      "commits": 513,
+      "commits": 0,
       "updated_at": "2025-10-04T03:48:20Z"
     },
     {
@@ -68,7 +68,7 @@
       "language": "Python",
       "html_url": "https://github.com/CuWO4/py-override",
       "stargazers_count": 2,
-      "commits": 12,
+      "commits": 0,
       "updated_at": "2026-03-26T20:21:30Z"
     },
     {
@@ -78,7 +78,7 @@
       "language": "C++",
       "html_url": "https://github.com/CuWO4/somehash",
       "stargazers_count": 2,
-      "commits": 12,
+      "commits": 0,
       "updated_at": "2026-04-16T15:31:38Z"
     },
     {
@@ -98,7 +98,7 @@
       "language": "C++",
       "html_url": "https://github.com/CuWO4/diagnose",
       "stargazers_count": 1,
-      "commits": 4,
+      "commits": 0,
       "updated_at": "2026-06-19T13:40:34Z"
     },
     {
@@ -108,7 +108,7 @@
       "language": "C++",
       "html_url": "https://github.com/CuWO4/Divisible-Regex-Generator",
       "stargazers_count": 1,
-      "commits": 10,
+      "commits": 0,
       "updated_at": "2025-09-04T14:23:34Z"
     },
     {
@@ -118,7 +118,7 @@
       "language": "C++",
       "html_url": "https://github.com/CuWO4/partlife",
       "stargazers_count": 1,
-      "commits": 12,
+      "commits": 0,
       "updated_at": "2026-06-12T14:09:43Z"
     },
     {
@@ -128,7 +128,7 @@
       "language": "C++",
       "html_url": "https://github.com/CuWO4/strade",
       "stargazers_count": 1,
-      "commits": 6,
+      "commits": 0,
       "updated_at": "2025-01-04T16:04:48Z"
     },
     {
@@ -182,13 +182,23 @@
       "updated_at": "2025-12-12T17:20:49Z"
     },
     {
+      "name": "CuWO4.github.io",
+      "full_name": "CuWO4/CuWO4.github.io",
+      "description": "self blog",
+      "language": null,
+      "html_url": "https://github.com/CuWO4/CuWO4.github.io",
+      "stargazers_count": 0,
+      "commits": 2,
+      "updated_at": "2026-08-31T15:25:52Z"
+    },
+    {
       "name": "generator",
       "full_name": "CuWO4/generator",
       "description": "Single-header, ranges-compatible generator type built on C++20 coroutines",
       "language": null,
       "html_url": "https://github.com/CuWO4/generator",
       "stargazers_count": 0,
-      "commits": 30,
+      "commits": 0,
       "updated_at": "2026-06-13T14:17:24Z"
     },
     {
@@ -198,7 +208,7 @@
       "language": "C++",
       "html_url": "https://github.com/CuWO4/Interval",
       "stargazers_count": 0,
-      "commits": 4,
+      "commits": 0,
       "updated_at": "2026-07-09T11:21:26Z"
     },
     {
@@ -208,7 +218,7 @@
       "language": "C++",
       "html_url": "https://github.com/CuWO4/mandelbrot",
       "stargazers_count": 0,
-      "commits": 3,
+      "commits": 0,
       "updated_at": "2026-08-06T14:43:06Z"
     },
     {
@@ -218,7 +228,7 @@
       "language": "Python",
       "html_url": "https://github.com/CuWO4/NJU-Agent",
       "stargazers_count": 0,
-      "commits": 13,
+      "commits": 0,
       "updated_at": "2026-08-29T15:38:54Z"
     },
     {
@@ -228,7 +238,7 @@
       "language": null,
       "html_url": "https://github.com/CuWO4/open-webui",
       "stargazers_count": 0,
-      "commits": 16562,
+      "commits": 0,
       "updated_at": "2026-05-18T18:46:05Z"
     },
     {
@@ -238,7 +248,7 @@
       "language": "Python",
       "html_url": "https://github.com/CuWO4/PuncConv",
       "stargazers_count": 0,
-      "commits": 4,
+      "commits": 0,
       "updated_at": "2025-03-12T09:42:47Z"
     },
     {
@@ -248,7 +258,7 @@
       "language": "Python",
       "html_url": "https://github.com/CuWO4/spectrum",
       "stargazers_count": 0,
-      "commits": 4,
+      "commits": 0,
       "updated_at": "2026-05-20T17:00:19Z"
     },
     {
@@ -258,7 +268,7 @@
       "language": "C",
       "html_url": "https://github.com/CuWO4/WDF-Hello-World",
       "stargazers_count": 0,
-      "commits": 1,
+      "commits": 0,
       "updated_at": "2025-01-04T16:06:30Z"
     },
     {
@@ -268,7 +278,7 @@
       "language": "Coq",
       "html_url": "https://github.com/CuWO4/well_order_theorem",
       "stargazers_count": 0,
-      "commits": 5,
+      "commits": 0,
       "updated_at": "2025-05-03T08:15:09Z"
     }
   ]
