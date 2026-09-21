@@ -1,16 +1,6 @@
 {
-  "generated_at": "2026-09-20T02:04:14+00:00",
+  "generated_at": "2026-09-21T02:05:09+00:00",
   "repos": [
-    {
-      "name": "Golf-Snake",
-      "full_name": "CuWO4/Golf-Snake",
-      "description": "a minimalist implementation of the classic game Snake using minimal code",
-      "language": "C",
-      "html_url": "https://github.com/CuWO4/Golf-Snake",
-      "stargazers_count": 6,
-      "commits": 28,
-      "updated_at": "2026-06-20T16:27:34Z"
-    },
     {
       "name": "ONRE",
       "full_name": "CuWO4/ONRE",
@@ -20,6 +10,16 @@
       "stargazers_count": 6,
       "commits": 139,
       "updated_at": "2026-07-13T17:01:42Z"
+    },
+    {
+      "name": "Golf-Snake",
+      "full_name": "CuWO4/Golf-Snake",
+      "description": "a minimalist implementation of the classic game Snake using minimal code",
+      "language": "C",
+      "html_url": "https://github.com/CuWO4/Golf-Snake",
+      "stargazers_count": 5,
+      "commits": 28,
+      "updated_at": "2026-09-20T17:47:07Z"
     },
     {
       "name": "Lambda-Calculus-Engine",
@@ -198,8 +198,8 @@
       "language": "JavaScript",
       "html_url": "https://github.com/CuWO4/CuWO4.github.io",
       "stargazers_count": 0,
-      "commits": 22,
-      "updated_at": "2026-09-19T02:00:21Z"
+      "commits": 23,
+      "updated_at": "2026-09-20T02:04:19Z"
     },
     {
       "name": "generator",
