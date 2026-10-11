@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T03:05:31+00:00",
+  "generated_at": "2026-10-11T02:36:53+00:00",
   "repos": [
     {
       "name": "ONRE",
@@ -32,6 +32,16 @@
       "updated_at": "2026-03-10T07:05:37Z"
     },
     {
+      "name": "ZhuGo",
+      "full_name": "CuWO4/ZhuGo",
+      "description": "基于深度学习和蒙特卡洛树搜索的围棋机器人.",
+      "language": "Python",
+      "html_url": "https://github.com/CuWO4/ZhuGo",
+      "stargazers_count": 4,
+      "commits": 513,
+      "updated_at": "2026-10-10T04:59:07Z"
+    },
+    {
       "name": "SysY-Compiler",
       "full_name": "CuWO4/SysY-Compiler",
       "description": "a toy compiler that compiles SysY (a subset of C) to RISC-V",
@@ -40,16 +50,6 @@
       "stargazers_count": 3,
       "commits": 140,
       "updated_at": "2025-04-05T09:03:37Z"
-    },
-    {
-      "name": "ZhuGo",
-      "full_name": "CuWO4/ZhuGo",
-      "description": "基于深度学习和蒙特卡洛树搜索的围棋机器人.",
-      "language": "Python",
-      "html_url": "https://github.com/CuWO4/ZhuGo",
-      "stargazers_count": 3,
-      "commits": 513,
-      "updated_at": "2025-10-04T03:48:20Z"
     },
     {
       "name": "Black-Hole-Renderer",
@@ -208,8 +208,8 @@
       "language": "JavaScript",
       "html_url": "https://github.com/CuWO4/CuWO4.github.io",
       "stargazers_count": 0,
-      "commits": 42,
-      "updated_at": "2026-10-09T03:25:50Z"
+      "commits": 43,
+      "updated_at": "2026-10-10T03:05:36Z"
     },
     {
       "name": "generator",
